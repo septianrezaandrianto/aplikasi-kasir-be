@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "cc980f89-73be-4b03-95c6-442414abeac9",
+		"name": "Aplikasi-Kasir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Read All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1992/category/readAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"category",
+								"readAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryName\" : \"Cemilan\",\n    \"createdBy\" : 1,\n    \"lastModifiedBy\" : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1992/category/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"category",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\" : \"Keripik Tales\",\n    \"productPhoto\" : \"keripik-tales.jpg\",\n    \"productPrice\" : 5000,\n    \"productCode\" : \"CML-004\",\n    \"createdBy\" : 1,\n    \"lastModifiedBy\" : 1,\n    \"category\" : {\n        \"categoryId\" : 5\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1992/product/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"product",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1992/product/readAll?categoryId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"product",
+								"readAll"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shopping Chart",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"total\" : 1,\n    \"price\" : 10000,\n    \"product\" :{\n        \"productId\" : 7\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1992/shoppingChart/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"shoppingChart",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1992/shoppingChart/readAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"shoppingChart",
+								"readAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read By Product Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1992/shoppingChart/read?productId=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"shoppingChart",
+								"read"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"price\" : 12500,\n    \"total\" :5,\n    \"product\" : {\n        \"productId\" :6\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1992/shoppingChart/update/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"shoppingChart",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
