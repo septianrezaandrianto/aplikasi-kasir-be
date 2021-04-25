@@ -13,5 +13,6 @@ public class ShoppingChartDTO {
 	private Integer total;
 	private BigDecimal price;
 	private ProductDTO product;
+//	private String note;
 	
 }

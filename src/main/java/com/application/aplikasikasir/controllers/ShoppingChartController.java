@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -102,6 +103,7 @@ public class ShoppingChartController {
 		input.setPrice(shoppingChart.getPrice());
 		input.setTotal(shoppingChart.getTotal());
 		input.setProduct(shoppingChart.getProduct());
+//		input.setNote("");
 		
 		ShoppingChart resultInput = shoppingChartRepository.save(input);
 		
@@ -112,7 +114,7 @@ public class ShoppingChartController {
 		return result;
 	}
 	
-	@CrossOrigin(origins="*", allowedHeaders = "*")
+
 	@PutMapping("/update/{shoppingChartId}")
 	public Map<String, Object> updateShoppingChart(@PathVariable(name="shoppingChartId") Long id, @RequestBody ShoppingChartDTO shoppingChartDto) {
 		Map<String, Object> result = new HashMap<>();
@@ -149,4 +151,18 @@ public class ShoppingChartController {
 		return result;
 	}
 	
+	
+	@DeleteMapping("/delete")
+	public Map<String, Object> deleteShoppingChart(@RequestParam("shoppingChartId") Long shoppingChartId) {
+		Map<String, Object> result = new HashMap<>();
+		ShoppingChart shoppingChart = shoppingChartRepository.findById(shoppingChartId).orElse(null);
+		
+		shoppingChartRepository.delete(shoppingChart);
+		
+		result.put(Constant.RESPONSE_STRING, HttpStatus.OK);
+		result.put(Constant.MESSAGE_STRING, Constant.SUCCESS_STRING);
+		result.put(Constant.DATA_STRING, shoppingChart);
+		
+		return result;
+	}
 }

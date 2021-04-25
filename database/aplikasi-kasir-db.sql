@@ -12,7 +12,7 @@
  Target Server Version : 130002
  File Encoding         : 65001
 
- Date: 24/04/2021 23:59:24
+ Date: 25/04/2021 20:39:21
 */
 
 
@@ -27,6 +27,18 @@ MAXVALUE 987654321
 START 1
 CACHE 1;
 ALTER SEQUENCE "public"."category_id_seq" OWNER TO "postgres";
+
+-- ----------------------------
+-- Sequence structure for order_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."order_id_seq";
+CREATE SEQUENCE "public"."order_id_seq" 
+INCREMENT 1
+MINVALUE  1
+MAXVALUE 9223372036854775807
+START 1
+CACHE 1;
+ALTER SEQUENCE "public"."order_id_seq" OWNER TO "postgres";
 
 -- ----------------------------
 -- Sequence structure for product_id_seq
@@ -75,6 +87,32 @@ BEGIN;
 INSERT INTO "public"."category" VALUES (3, 'Makanan', 1, '2021-04-24 17:41:16.341', 1, '2021-04-24 17:41:16.341', 'f');
 INSERT INTO "public"."category" VALUES (4, 'Minuman', 1, '2021-04-24 17:41:25.43', 1, '2021-04-24 17:41:25.43', 'f');
 INSERT INTO "public"."category" VALUES (5, 'Cemilan', 1, '2021-04-24 17:41:30.232', 1, '2021-04-24 17:41:30.232', 'f');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."orders";
+CREATE TABLE "public"."orders" (
+  "order_id" int8 NOT NULL,
+  "total" numeric,
+  "order_product" text COLLATE "pg_catalog"."default"
+)
+;
+ALTER TABLE "public"."orders" OWNER TO "postgres";
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+BEGIN;
+INSERT INTO "public"."orders" VALUES (42, 59000, '[{"shoppingChartId":28,"total":2,"price":20000,"product":{"productId":2,"productName":"Bakso Urat","productPhoto":"bakso.jpeg","productCode":"MKN-001","productPrice":10000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:42:57 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:42:57 PM","isDeleted":false}},{"shoppingChartId":30,"total":1,"price":4000,"product":{"productId":12,"productName":"Keripik Ubi","productPhoto":"keripik-ubi.jpeg","productCode":"CML-002","productPrice":4000,"category":{"categoryId":5,"categoryName":"Cemilan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:30 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:30 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:46:45 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:46:45 PM","isDeleted":false}},{"shoppingChartId":31,"total":1,"price":5000,"product":{"productId":37,"productName":"Keripik Tales","productPhoto":"keripik-tales.jpeg","productCode":"CML-004","productPrice":5000,"category":{"categoryId":5,"categoryName":"Cemilan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:30 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:30 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 6:26:46 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 6:26:46 PM","isDeleted":false}},{"shoppingChartId":32,"total":1,"price":4000,"product":{"productId":11,"productName":"Keripik Singkong","productPhoto":"keripik-singkong.jpeg","productCode":"CML-001","productPrice":4000,"category":{"categoryId":5,"categoryName":"Cemilan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:30 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:30 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:46:37 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:46:37 PM","isDeleted":false}},{"shoppingChartId":33,"total":1,"price":5000,"product":{"productId":13,"productName":"Keripik Kentang","productPhoto":"keripik-kentang.jpeg","productCode":"CML-003","productPrice":5000,"category":{"categoryId":5,"categoryName":"Cemilan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:30 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:30 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:46:57 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:46:57 PM","isDeleted":false}},{"shoppingChartId":29,"total":2,"price":12000,"product":{"productId":10,"productName":"Air Mineral","productPhoto":"air-mineral.jpeg","productCode":"MNM-003","productPrice":6000,"category":{"categoryId":4,"categoryName":"Minuman","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:25 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:25 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:46:12 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:46:12 PM","isDeleted":false}},{"shoppingChartId":34,"total":1,"price":6000,"product":{"productId":9,"productName":"Jus Jeruk","productPhoto":"es-jeruk.jpeg","productCode":"MNM-002","productPrice":6000,"category":{"categoryId":4,"categoryName":"Minuman","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:25 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:25 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:45:54 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:45:54 PM","isDeleted":false}},{"shoppingChartId":35,"total":1,"price":3000,"product":{"productId":8,"productName":"Es Teh","productPhoto":"es-teh.jpeg","productCode":"MNM-001","productPrice":3000,"category":{"categoryId":4,"categoryName":"Minuman","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:25 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:25 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:45:34 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:45:34 PM","isDeleted":false}}]');
+INSERT INTO "public"."orders" VALUES (43, 59000, '[{"shoppingChartId":28,"total":2,"price":20000,"product":{"productId":2,"productName":"Bakso Urat","productPhoto":"bakso.jpeg","productCode":"MKN-001","productPrice":10000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:42:57 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:42:57 PM","isDeleted":false}},{"shoppingChartId":30,"total":1,"price":4000,"product":{"productId":12,"productName":"Keripik Ubi","productPhoto":"keripik-ubi.jpeg","productCode":"CML-002","productPrice":4000,"category":{"categoryId":5,"categoryName":"Cemilan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:30 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:30 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:46:45 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:46:45 PM","isDeleted":false}},{"shoppingChartId":31,"total":1,"price":5000,"product":{"productId":37,"productName":"Keripik Tales","productPhoto":"keripik-tales.jpeg","productCode":"CML-004","productPrice":5000,"category":{"categoryId":5,"categoryName":"Cemilan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:30 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:30 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 6:26:46 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 6:26:46 PM","isDeleted":false}},{"shoppingChartId":32,"total":1,"price":4000,"product":{"productId":11,"productName":"Keripik Singkong","productPhoto":"keripik-singkong.jpeg","productCode":"CML-001","productPrice":4000,"category":{"categoryId":5,"categoryName":"Cemilan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:30 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:30 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:46:37 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:46:37 PM","isDeleted":false}},{"shoppingChartId":33,"total":1,"price":5000,"product":{"productId":13,"productName":"Keripik Kentang","productPhoto":"keripik-kentang.jpeg","productCode":"CML-003","productPrice":5000,"category":{"categoryId":5,"categoryName":"Cemilan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:30 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:30 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:46:57 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:46:57 PM","isDeleted":false}},{"shoppingChartId":29,"total":2,"price":12000,"product":{"productId":10,"productName":"Air Mineral","productPhoto":"air-mineral.jpeg","productCode":"MNM-003","productPrice":6000,"category":{"categoryId":4,"categoryName":"Minuman","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:25 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:25 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:46:12 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:46:12 PM","isDeleted":false}},{"shoppingChartId":34,"total":1,"price":6000,"product":{"productId":9,"productName":"Jus Jeruk","productPhoto":"es-jeruk.jpeg","productCode":"MNM-002","productPrice":6000,"category":{"categoryId":4,"categoryName":"Minuman","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:25 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:25 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:45:54 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:45:54 PM","isDeleted":false}},{"shoppingChartId":35,"total":1,"price":3000,"product":{"productId":8,"productName":"Es Teh","productPhoto":"es-teh.jpeg","productCode":"MNM-001","productPrice":3000,"category":{"categoryId":4,"categoryName":"Minuman","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:25 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:25 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:45:34 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:45:34 PM","isDeleted":false}}]');
+INSERT INTO "public"."orders" VALUES (44, 10000, '[{"shoppingChartId":36,"total":1,"price":10000,"product":{"productId":2,"productName":"Bakso Urat","productPhoto":"bakso.jpeg","productCode":"MKN-001","productPrice":10000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:42:57 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:42:57 PM","isDeleted":false}}]');
+INSERT INTO "public"."orders" VALUES (45, 28000, '[{"shoppingChartId":37,"total":2,"price":22000,"product":{"productId":6,"productName":"Ketoprak","productPhoto":"ketoprak.jpeg","productCode":"MKN-005","productPrice":11000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:44:28 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:44:28 PM","isDeleted":false}},{"shoppingChartId":38,"total":1,"price":6000,"product":{"productId":7,"productName":"Tahu Gejrot","productPhoto":"tahu-gejrot.jpeg","productCode":"MKN-006","productPrice":6000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:45:00 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:45:00 PM","isDeleted":false}}]');
+INSERT INTO "public"."orders" VALUES (46, 0, '[]');
+INSERT INTO "public"."orders" VALUES (47, 22000, '[{"shoppingChartId":43,"total":1,"price":12000,"product":{"productId":3,"productName":"Mie Ayam","productPhoto":"mie-ayam.jpeg","productCode":"MKN-002","productPrice":12000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:43:13 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:43:13 PM","isDeleted":false}},{"shoppingChartId":44,"total":1,"price":10000,"product":{"productId":2,"productName":"Bakso Urat","productPhoto":"bakso.jpeg","productCode":"MKN-001","productPrice":10000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:42:57 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:42:57 PM","isDeleted":false}}]');
+INSERT INTO "public"."orders" VALUES (48, 22000, '[{"shoppingChartId":46,"total":1,"price":10000,"product":{"productId":2,"productName":"Bakso Urat","productPhoto":"bakso.jpeg","productCode":"MKN-001","productPrice":10000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:42:57 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:42:57 PM","isDeleted":false}},{"shoppingChartId":47,"total":1,"price":12000,"product":{"productId":3,"productName":"Mie Ayam","productPhoto":"mie-ayam.jpeg","productCode":"MKN-002","productPrice":12000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:43:13 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:43:13 PM","isDeleted":false}}]');
+INSERT INTO "public"."orders" VALUES (49, 20000, '[{"shoppingChartId":48,"total":2,"price":20000,"product":{"productId":2,"productName":"Bakso Urat","productPhoto":"bakso.jpeg","productCode":"MKN-001","productPrice":10000,"category":{"categoryId":3,"categoryName":"Makanan","createdBy":1,"createdOn":"Apr 24, 2021, 5:41:16 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:41:16 PM","isDeleted":false},"createdBy":1,"createdOn":"Apr 24, 2021, 5:42:57 PM","lastModifiedBy":1,"lastModifiedOn":"Apr 24, 2021, 5:42:57 PM","isDeleted":false}}]');
 COMMIT;
 
 -- ----------------------------
@@ -130,24 +168,14 @@ CREATE TABLE "public"."shopping_chart" (
 ALTER TABLE "public"."shopping_chart" OWNER TO "postgres";
 
 -- ----------------------------
--- Records of shopping_chart
+-- Alter sequences owned by
 -- ----------------------------
-BEGIN;
-INSERT INTO "public"."shopping_chart" VALUES (18, 2, 12000, 10);
-INSERT INTO "public"."shopping_chart" VALUES (19, 1, 4000, 11);
-INSERT INTO "public"."shopping_chart" VALUES (20, 1, 5000, 13);
-INSERT INTO "public"."shopping_chart" VALUES (21, 1, 6000, 7);
-INSERT INTO "public"."shopping_chart" VALUES (23, 1, 11000, 6);
-INSERT INTO "public"."shopping_chart" VALUES (22, 4, 40000, 2);
-INSERT INTO "public"."shopping_chart" VALUES (16, 6, 24000, 12);
-INSERT INTO "public"."shopping_chart" VALUES (24, 3, 15000, 37);
-INSERT INTO "public"."shopping_chart" VALUES (17, 3, 9000, 8);
-COMMIT;
+SELECT setval('"public"."category_id_seq"', 6, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
-SELECT setval('"public"."category_id_seq"', 6, true);
+SELECT setval('"public"."order_id_seq"', 50, true);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -157,12 +185,17 @@ SELECT setval('"public"."product_id_seq"', 38, true);
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
-SELECT setval('"public"."shopping_chart_id_seq"', 25, true);
+SELECT setval('"public"."shopping_chart_id_seq"', 49, true);
 
 -- ----------------------------
 -- Primary Key structure for table category
 -- ----------------------------
 ALTER TABLE "public"."category" ADD CONSTRAINT "category_pkey" PRIMARY KEY ("category_id");
+
+-- ----------------------------
+-- Primary Key structure for table orders
+-- ----------------------------
+ALTER TABLE "public"."orders" ADD CONSTRAINT "order_pkey" PRIMARY KEY ("order_id");
 
 -- ----------------------------
 -- Primary Key structure for table product

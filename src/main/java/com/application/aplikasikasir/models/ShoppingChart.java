@@ -50,4 +50,6 @@ public class ShoppingChart implements Serializable {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 	
+//	@Column(name="note")
+//	private String note;
 }

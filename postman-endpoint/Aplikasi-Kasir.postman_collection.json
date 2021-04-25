@@ -152,7 +152,7 @@
 					"response": []
 				},
 				{
-					"name": "ReadAll",
+					"name": "Read All",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -222,6 +222,86 @@
 								"shoppingChart",
 								"update",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1992/shoppingChart/delete?shoppingChartId=30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"shoppingChart",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "shoppingChartId",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Read All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1992/order/readAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"order",
+								"readAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"total\" :3500000,\n    \"orderProduct\" : [\n         {\n            \"shoppingChartId\": 28,\n            \"total\": 2,\n            \"price\": 20000,\n            \"product\": {\n                \"productId\": 2,\n                \"productName\": \"Bakso Urat\",\n                \"productPhoto\": \"bakso.jpeg\",\n                \"productCode\": \"MKN-001\",\n                \"productPrice\": 10000,\n                \"category\": {\n                    \"categoryId\": 3,\n                    \"categoryName\": \"Makanan\",\n                    \"createdBy\": 1,\n                    \"createdOn\": \"2021-04-24T10:41:16.341+00:00\",\n                    \"lastModifiedBy\": 1,\n                    \"lastModifiedOn\": \"2021-04-24T10:41:16.341+00:00\",\n                    \"isDeleted\": false\n                },\n                \"createdBy\": \"1\",\n                \"createdOn\": \"2021-04-24T10:42:57.071+00:00\",\n                \"lastModifiedBy\": \"1\",\n                \"lastModifiedOn\": \"2021-04-24T10:42:57.071+00:00\",\n                \"isDeleted\": false\n            }\n        },\n        {\n            \"shoppingChartId\": 29,\n            \"total\": 1,\n            \"price\": 6000,\n            \"product\": {\n                \"productId\": 10,\n                \"productName\": \"Air Mineral\",\n                \"productPhoto\": \"air-mineral.jpeg\",\n                \"productCode\": \"MNM-003\",\n                \"productPrice\": 6000,\n                \"category\": {\n                    \"categoryId\": 4,\n                    \"categoryName\": \"Minuman\",\n                    \"createdBy\": 1,\n                    \"createdOn\": \"2021-04-24T10:41:25.430+00:00\",\n                    \"lastModifiedBy\": 1,\n                    \"lastModifiedOn\": \"2021-04-24T10:41:25.430+00:00\",\n                    \"isDeleted\": false\n                },\n                \"createdBy\": \"1\",\n                \"createdOn\": \"2021-04-24T10:46:12.929+00:00\",\n                \"lastModifiedBy\": \"1\",\n                \"lastModifiedOn\": \"2021-04-24T10:46:12.929+00:00\",\n                \"isDeleted\": false\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1992/order/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1992",
+							"path": [
+								"order",
+								"create"
 							]
 						}
 					},
